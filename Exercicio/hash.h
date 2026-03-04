@@ -1,29 +1,21 @@
-#ifndef HASH_H
-#define HASH_H
-
 #include "aluno.h"
 
 class Hash {
-private:
+    private:
+    int FuncaoHash(Aluno aluno);
     int max_itens;
     int max_posicoes;
-    int colisoes;
+    int quant_itens;
     Aluno* estrutura;
-    int sondagemLinear(int ra);
-public:
+
+    public:
     Hash(int t);
     ~Hash();
-    bool estacheio() const;
-    int obterTamanhoAtual() const;
-    int obterColisoes() const;
+    bool estacheio();
+    int obterTamanhoAtual();
+    int funcaoHash(int chave);
     void inserir(Aluno a);
-    bool buscar(int ra, Aluno& resultado);
-    bool remover(int ra);
-    void imprimir() const;
-    void imprimirEstatisticas() const;
-    void limpar();
+    Aluno* buscar(Aluno& aluno, bool& busca);
+    void remover(int ra);
+    void imprimir();
 };
-
-int funcaoHash(int chave, int max_posicoes);
-
-#endif

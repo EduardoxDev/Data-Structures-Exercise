@@ -1,21 +1,26 @@
 #include "aluno.h"
 
-Aluno::Aluno() : ra(0), nome(""), ativo(false) {}
-
-Aluno::Aluno(int r, std::string n) : ra(r), nome(n), ativo(true) {}
-
-int Aluno::obterRa() const {
+  Aluno::Aluno() {
+    ra = 0;
+    nome = "";
+    idade = 0;
+    moradia = "";
+  }
+  Aluno::Aluno(int r, string n, int i) {
+    ra = r;
+    nome = n;
+    idade = i;
+    moradia = m;
+  }
+  int Aluno::obterRa() {
     return ra;
-}
-
-std::string Aluno::obterNome() const {
+  }
+  string Aluno::obterNome() {
     return nome;
-}
-
-bool Aluno::estaAtivo() const {
-    return ativo;
-}
-
-void Aluno::desativar() {
-    ativo = false;
-}
+  }
+  int Aluno::obterIdade() {
+    return idade;
+  }
+  string Aluno::obterMoradia() {
+    return moradia;
+  }

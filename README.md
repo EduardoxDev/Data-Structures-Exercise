@@ -60,7 +60,11 @@ Criado com o objetivo de:
 ### 🚀 Funcionalidades Avançadas
 
 - **🔄 Tratamento de Colisões**: Implementação de Linear Probing com sondagem circular
-- **✔️ Validação Robusta**: Sistema completo de validação de entrada (RA: 1-999999, Nome: 3-50 chars)
+- **✔️ Validação Robusta**: Sistema completo de validação de entrada
+  - RA: 1-999999
+  - Nome: 3-50 caracteres
+  - Idade: 0-150 anos
+  - Moradia: 3-100 caracteres
 - **📝 Sistema de Logs**: Registro automático de todas as operações com timestamps
 - **⚡ Benchmarking**: Testes de performance para inserção e busca
 - **🚫 Prevenção de Duplicatas**: Verificação automática antes da inserção
@@ -184,6 +188,8 @@ int sondagemLinear(int ra) {
 class Aluno {
     int ra;
     string nome;
+    int idade;
+    string moradia;
     bool ativo;  // Flag para soft delete
 };
 ```
@@ -208,8 +214,8 @@ class Aluno {
 #### Complexidade Espacial
 
 - **Tabela Hash**: O(n) onde n = capacidade máxima
-- **Overhead por Aluno**: ~60 bytes (int + string + bool)
-- **Total**: O(n × 60 bytes)
+- **Overhead por Aluno**: ~180 bytes (int + string + int + string + bool)
+- **Total**: O(n × 180 bytes)
 
 #### Fator de Carga
 
@@ -331,6 +337,8 @@ hash_program.exe
 
 Digite o RA: 123456
 Digite o Nome: João Silva
+Digite a Idade: 20
+Digite a Moradia: São Paulo
 
 [SUCESSO] Aluno inserido com sucesso!
 ```
@@ -338,6 +346,8 @@ Digite o Nome: João Silva
 **Validações Aplicadas:**
 - RA deve ser entre 1 e 999999
 - Nome deve ter entre 3 e 50 caracteres
+- Idade deve ser entre 0 e 150 anos
+- Moradia deve ter entre 3 e 100 caracteres
 - RA não pode estar duplicado
 
 #### 2️⃣ Buscar Aluno
@@ -350,6 +360,8 @@ Digite o RA: 123456
 [ENCONTRADO]
 RA: 123456
 Nome: João Silva
+Idade: 20
+Moradia: São Paulo
 ```
 
 #### 3️⃣ Estatísticas Detalhadas
@@ -395,7 +407,7 @@ Média: 12.34 us/operação
 
 ```
 [Mon Dec 16 14:23:45 2024] Sistema iniciado pelo usuario
-[Mon Dec 16 14:24:12 2024] Aluno inserido: RA=123456, Nome=João Silva
+[Mon Dec 16 14:24:12 2024] Aluno inserido: RA=123456, Nome=João Silva, Idade=20, Moradia=São Paulo
 [Mon Dec 16 14:24:45 2024] Busca bem-sucedida: RA=123456
 [Mon Dec 16 14:25:03 2024] Aluno removido: RA=123456
 [Mon Dec 16 14:25:30 2024] Sistema encerrado pelo usuario
@@ -490,6 +502,8 @@ Performance esperada:
 - ✅ Prevenção de duplicatas
 - ✅ Validação de RA inválido
 - ✅ Validação de nome inválido
+- ✅ Validação de idade inválida
+- ✅ Validação de moradia inválida
 
 #### Teste de Busca
 - ✅ Busca em tabela vazia

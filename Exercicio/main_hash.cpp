@@ -51,6 +51,7 @@ int main() {
     Hash hash(20);
     int opcao, ra;
     string nome;
+    int idade;
     
     do {
         limparTela();
@@ -84,15 +85,31 @@ int main() {
                             cout << "  [ERRO] " << Validador::obterMensagemErro() << endl;
                             Logger::registrar("Validacao falhou: Nome invalido");
                         } else {
+                            cout << "  Digite a Idade: ";
+                            cin >> idade;
+                            
+                            if (!Validador::validarIdade(idade)) {
+                                cout << "  [ERRO] " << Validador::obterMensagemErro() << endl;
+                                Logger::registrar("Validacao falhou: Idade invalida - " + to_string(idade));
+                                else {
+                                    cout << "  Digite a Moradia: ";
+                                    cin.ignore();
+                                    string moradia;
+                                    getline(cin, moradia);
+                                    if (!Validador::validarMoradia(moradia)) {
+                                        cout << "  [ERRO] " << Validador::obterMensagemErro() << endl;
+                                        Logger::registrar("Validacao falhou: Moradia invalida");
+                                    } else {
+                            } else {
                             Aluno temp;
                             if (hash.buscar(ra, temp)) {
                                 cout << "\n  [AVISO] Aluno com RA " << ra << " ja existe!" << endl;
                                 Logger::registrar("Tentativa de inserir RA duplicado: " + to_string(ra));
                             } else {
-                                Aluno a(ra, nome);
+                                Aluno a(ra, nome, idade);
                                 hash.inserir(a);
                                 cout << "\n  [SUCESSO] Aluno inserido com sucesso!" << endl;
-                                Logger::registrar("Aluno inserido: RA=" + to_string(ra) + ", Nome=" + nome);
+                                Logger::registrar("Aluno inserido: RA=" + to_string(ra) + ", Nome=" + nome + ", Idade=" + to_string(idade));
                             }
                         }
                     }

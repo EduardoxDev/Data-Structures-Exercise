@@ -1,20 +1,18 @@
-#ifndef ALUNO_H
-#define ALUNO_H
+#include <iostream>'
+using namespace std;
 
-#include <string>
-
-class Aluno {
-private:
+class Aluno{
+    private:
     int ra;
-    std::string nome;
-    bool ativo;
-public:
-    Aluno();
-    Aluno(int r, std::string n);
-    int obterRa() const;
-    std::string obterNome() const;
-    bool estaAtivo() const;
-    void desativar();
-};
+    string nome;
+    int idade;
+    string moradia;
 
-#endif
+    public:
+    Aluno();
+    Aluno(int r, string n, int i, string m);
+    int obterRa();
+    string obterNome();
+    int obterIdade();
+    string obterMoradia();
+    };
